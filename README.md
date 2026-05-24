@@ -90,3 +90,36 @@ Primer proyecto publicado en GitHub 🚀
 Este proyecto tiene fines educativos y de investigación.
 
 Operar en mercados financieros implica riesgos.
+
+
+## 📦 Instalación
+
+### Requisitos
+
+- Python 3.10 o superior
+- Git
+
+### Clonar el repositorio
+
+```bash
+git clone https://github.com/OLIVER26GOLDEN/TeamBinari_Bot.git
+cd TeamBinari_Bot
+```
+
+### Instalar dependencias
+
+```bash
+pip install -r requirements.txt
+```
+
+### Instalar la librería de IQ Option
+
+```bash
+pip install iqoption
+```
+
+### Comprobar instalación
+
+```python
+from iqoption.stable_api import IQ_Option
+```
