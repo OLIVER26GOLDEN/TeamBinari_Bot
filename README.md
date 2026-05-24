@@ -48,20 +48,17 @@ Este repositorio representa la versión actual y estable del proyecto.
 ## 📂 Estructura del proyecto
 
 ```text
-BINARI/
-│
-├── main.py
-├── strategy.py
-├── trader.py
-├── indicators.py
-├── config/
-└── logs/
+README.md
+├─ 🎯 Descripción
+├─ 📦 Instalación
+├─ ▶️ Uso
+├─ ⚙️ Configuración
+└─ 👨‍💻 Autor
 ```
 
 ---
 
 ## 📈 Evolución
-
 El proyecto ha pasado por cientos de iteraciones y mejoras.
 
 Actualmente se encuentra en una fase estable sobre la que continúo desarrollando nuevas funcionalidades.
