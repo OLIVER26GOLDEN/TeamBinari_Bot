@@ -10,7 +10,6 @@ PASSWORD = "CONTRASEÑA "
 
 # ==============================
 # 📩 TELEGRAM
-# ==============================
 TELEGRAM_TOKEN = "TOKEN_TELEGRAM"
 CHAT_ID        = "CHAT_ID"
 

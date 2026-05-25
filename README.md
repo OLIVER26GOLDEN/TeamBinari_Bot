@@ -123,3 +123,38 @@ pip install iqoption
 ```python
 from iqoption.stable_api import IQ_Option
 ```
+## ▶️ Uso
+
+### Conexión básica
+
+```python
+from iqoptionapi.stable_api import IQ_Option
+
+iq = IQ_Option("email","password")
+iq.connect()
+```
+
+### Comprobar conexión
+
+```python
+print(iq.check_connect())
+```
+
+### Obtener velas
+
+```python
+import time
+from iqoptionapi.stable_api import IQ_Option
+
+iq = IQ_Option("email","password")
+iq.connect()
+
+velas = iq.get_candles("EURUSD", 60, 111, time.time())
+print(velas)
+```
+
+### Obtener tiempo del servidor
+
+```python
+print(iq.get_server_timestamp())
+```
