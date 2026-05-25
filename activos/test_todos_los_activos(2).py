@@ -4,8 +4,8 @@ import time
 # ==============================
 # ⚙️ CREDENCIALES
 # ==============================
-EMAIL = "antoni28018@gmail.com"
-PASSWORD = "oliver26@A26"
+EMAIL    = "GMAIL.COM"
+PASSWORD = "CONTRASEÑA "
 
 MONTO     = 1
 DIRECCION = "PUT"
