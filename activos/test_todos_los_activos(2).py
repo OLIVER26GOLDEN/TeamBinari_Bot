@@ -7,6 +7,7 @@ import time
 EMAIL    = "GMAIL.COM"
 PASSWORD = "CONTRASEÑA "
 
+
 MONTO     = 1
 DIRECCION = "PUT"
 DURACION  = 1
@@ -125,3 +126,4 @@ for activo, _ in disponibles:
     print(f'    "{activo}",')
 print("]")
 print(f"{'='*45}")
+#fin
