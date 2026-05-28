@@ -1,0 +1,18 @@
+# Crear entorno virtual con Python 3.12
+python3.12 -m venv venv
+
+# Activar entorno virtual Linux
+source venv/bin/activate
+
+# Activar en Windows
+venv\Scripts\activate
+
+# Instalar librerías
+pip install iqoption
+pip install requests
+pip install pandas
+pip install numpy
+pip install pyautogui
+
+# Generar requirements
+pip freeze > requirements.txt
