@@ -4,8 +4,8 @@ import time
 # ==============================
 # ⚙️ CREDENCIALES
 # ==============================
-EMAIL    = "GMAIL.COM"
-PASSWORD = "CONTRASEÑA "
+EMAIL = "antoni28018@gmail.com"
+PASSWORD = "oliver26@A26"
 
 
 MONTO     = 1
@@ -13,34 +13,16 @@ DIRECCION = "PUT"
 DURACION  = 1
 
 # ==============================
-# 📋 NOMBRES EXACTOS VERIFICADOS EN iqoptionapi
+# 📋 TODOS LOS OTC CONOCIDOS EN IQ OPTION
 # ==============================
 TODOS_OTC = [
-    "EURUSD",
-    "GBPUSD",
-    "EURJPY",
-    "EURGBP",
-    "USDJPY",
-    "USDCHF",
-    "USDCAD",
-    "NZDUSD",
-    "AUDUSD",
-    "CADJPY",
-    "AUDCAD",
-    "GBPJPY",
-    "GBPAUD",
-    "GBPCAD",
-    "GBPCHF",
-    "EURCAD",
-    "EURCHF",
-    "AUDCHF",
-    "AUDNZD",
-    "NZDCAD",
-    "NZDJPY",
-    "NZDCHF",
-    "CADJPY",
-    "CADCHF",
-    "CHFJPY",
+    
+    "EURUSD-OTC",
+    "GBPUSD-OTC",
+    "EURJPY-OTC",
+    "EURGBP-OTC",
+    "USDCHF-OTC",
+    "AUDCAD-OTC",
 ]
 
 # ==============================
@@ -61,7 +43,7 @@ print(f"💼 Cuenta: PRACTICE")
 print(f"🔍 Probando {len(TODOS_OTC)} activos OTC...\n")
 
 # ==============================
-# 🔄 FASE 1 — DETECTAR DISPONIBLES
+# 🔄 FASE 1 — DETECTAR CUÁLES ESTÁN DISPONIBLES (sin operar)
 # ==============================
 print("=" * 45)
 print("FASE 1 — Detectando activos disponibles...")
@@ -70,24 +52,19 @@ print("=" * 45)
 disponibles = []
 
 for ACTIVO in TODOS_OTC:
-    try:
-        estado, op_id = Iq.buy(MONTO, ACTIVO, DIRECCION, DURACION)
-        if estado:
-            disponibles.append((ACTIVO, op_id))
-            print(f"  ✅ {ACTIVO}")
-        else:
-            print(f"  ❌ {ACTIVO} — no disponible")
-    except KeyError:
-        print(f"  ⚠️ {ACTIVO} — nombre no reconocido por la librería")
-    except Exception as e:
-        print(f"  ⚠️ {ACTIVO} — error: {e}")
+    estado, op_id = Iq.buy(MONTO, ACTIVO, DIRECCION, DURACION)
+    if estado:
+        disponibles.append((ACTIVO, op_id))
+        print(f"  ✅ {ACTIVO} — DISPONIBLE (ID: {op_id})")
+    else:
+        print(f"  ❌ {ACTIVO} — no disponible")
     time.sleep(0.5)
 
 # ==============================
-# 📊 FASE 2 — ESPERAR RESULTADOS
+# 📊 FASE 2 — ESPERAR RESULTADOS DE LOS DISPONIBLES
 # ==============================
 print(f"\n{'='*45}")
-print(f"FASE 2 — {len(disponibles)} operaciones abiertas, esperando...")
+print(f"FASE 2 — Esperando resultados ({len(disponibles)} operaciones abiertas)...")
 print(f"{'='*45}")
 
 if disponibles:
@@ -110,20 +87,18 @@ for ACTIVO, op_id in disponibles:
 print(f"\n{'='*45}")
 print("📊 RESUMEN FINAL")
 print(f"{'='*45}")
-print(f"Probados:      {len(TODOS_OTC)}")
-print(f"Disponibles:   {len(disponibles)}")
+print(f"Total probados:    {len(TODOS_OTC)}")
+print(f"Disponibles:       {len(disponibles)}")
+print(f"No disponibles:    {len(TODOS_OTC) - len(disponibles)}")
 print(f"{'='*45}")
 
 if resultados:
     print("\nResultados:")
     for activo, res in resultados:
-        print(f"  {activo:25s} → {res}")
+        print(f"  {activo:22s} → {res}")
 
 print(f"\n{'='*45}")
-print("✅ Copia esta lista en tu bot:")
-print("ACTIVOS = [")
+print("✅ Activos OTC confirmados para tu bot:")
 for activo, _ in disponibles:
-    print(f'    "{activo}",')
-print("]")
+    print(f'  "{activo}",')
 print(f"{'='*45}")
-#fin
