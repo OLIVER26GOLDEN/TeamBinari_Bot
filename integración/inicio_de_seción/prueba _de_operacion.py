@@ -2,8 +2,8 @@ from iqoptionapi.stable_api import IQ_Option
 import time
 
 # ================= CREDENCIALES =================
-EMAIL    = "GMAIL.COM"
-PASSWORD = "CONTRASEÑA "
+EMAIL    = "@gmail.com"
+PASSWORD = "contraseña"
 
 # ================= CONFIG =================
 ACTIVO = "EURUSD-OTC"   # o EURUSD-OTC
@@ -49,16 +49,40 @@ print("ID:", trade_id)
 # ================= RESULTADO =================
 print("⏳ Esperando resultado...")
 
-while True:
-    check, win = iq.check_win_v2(trade_id)
+result = iq.check_win_v3(trade_id)
 
-    if check:
-        if win > 0:
-            print("🏆 GANASTE:", win)
-        elif win == 0:
-            print("🤝 EMPATE")
-        else:
-            print("❌ PERDISTE:", win)
-        break
+if isinstance(result, tuple):
+    # some forks still return (status, value)
+    status, win = result
+else:
+    win = result
 
-    time.sleep(1)
+if win > 0:
+    print(f"✅ Ganada: +{win}")
+elif win < 0:
+    print(f"❌ Perdida: {win}")
+else:
+    print("➖ Empate/Doji")
+
+
+
+
+
+
+
+
+
+
+#while True:
+   # check, win = iq.check_win_v3(trade_id)
+
+   # if check:
+    #    if win > 0:
+     #       print("🏆 GANASTE:", win)
+    #  elif win == 0:
+      #      print("🤝 EMPATE")
+       # else:
+        #    print("❌ PERDISTE:", win)
+        #break
+
+    #time.sleep(1)
